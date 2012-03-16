@@ -1,0 +1,342 @@
+\documentclass[a4paper,11pt]{article}
+\newif\ifshowcode
+\showcodetrue
+
+\usepackage{latexsym}
+\usepackage[portuges]{babel}
+\usepackage{a4wide}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{listings}
+\usepackage[toc,page]{appendix}
+
+\parindent=0pt
+\parskip=2pt
+
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\topmargin}{0in}
+\addtolength{\topmargin}{-\headheight}
+\addtolength{\topmargin}{-\headsep}
+\setlength{\textheight}{8.9in}
+\setlength{\textwidth}{6.5in}
+\setlength{\marginparwidth}{0.5in}
+
+\pagestyle{headings}
+
+%
+% Report to Engineering Languages UCE
+%
+\title{\huge \bigskip
+\begin{figure}[!ht]
+\begin{flushright}
+\includegraphics[width=0.2\textwidth]{./Images/um-eng.jpg} \vspace{1cm}
+\end{flushright}
+\end{figure}
+{\huge Grammar Analyser} \vspace{3cm} \\
+{\LARGE Universidade do Minho}\\
+{\large Mestrado de Informática, Engenharia de Linguagens}
+}
+\author{\large XXXXXXX pg$^{\circ}$ZZZZZ \and \large YYYYYYY pg$^{\circ}$WWWWW}
+\date{\vspace{3cm} \LARGE \today}
+
+\begin{document}
+\pagenumbering{roman}
+\maketitle
+\newpage
+\large \tableofcontents
+\pagenumbering{arabic}
+
+\newpage
+%%
+% Secção - Introdução
+%%
+\section{\LARGE Introdução}
+\hspace{1cm}Pretende-se desenvolver um analisador de gramáticas através da utilização de \verb|XAGra| e \textbf{\emph{JAVA}} no âmbito de automatizar algumas tarefas fulcrais na análise de gramáticas, principalmente em gramáticas de atributos. Ao longo deste relatório serão abordadas as várias estratégias para a obtenção da tabela de identificadores e grafo de dependências, para o \verb*|cálculo das diferentes métricas e técnicas de |\emph{slicing}.\\
+\newline
+Numa primeira abordagem, a gramática é apresentada de uma forma genérica através da linguagem XAGra, baseada em \textbf{XML}, para ser possível criar um linguagem intermédia para análise das diversas gramáticas. Durante o \emph{parsing} da gramática é recolhida a informação necessária para a construção da tabela de identificadores e para o desenvolvimento do grafo de dependências. O mecanismo de \emph{parsing} foi formulado e desenvolvido em \emph{JAVA}. Este tipo de ferramentas não são muito usuais apesar de estes serem passos extremamente necessários para a avaliação de uma gramática por isso são necessários confrontos de estratégias como as que foram abordadas ao longo das aulas, que permitam criar uma aplicação o mais genérica e precisa possível.\\
+%\newline
+Este relatório vai servir como \TeX{}teste.
+
+\newpage
+%%
+% Secção - Descrição do Problema
+%%
+\section{\LARGE Descrição do Problema}
+
+%%
+% Secção - Enunciado
+%%
+\subsection{\large Breve Introdução ao Problema}
+
+Este projecto veio no seguimentos dos anteriores, já que depois de feito o estudo sobre as métricas é nos pedido que façamos o cálculo das mesmas através do processamento de gramáticas de atributos.\\
+\newline
+Este processo divide-se em três passos, o primeiro é o armazenamento dos símbolos e de toda a informação relevante aos mesmos, numa estrutura de dados designada por tabela de identificadores. A escolha desta estrutura é livre mesmo que normalmente esta seja um mapeamento. O segundo passo implica calcular as métricas de tamanho relativamente à gramática e o terceiro a representação textual e gráfica do grafo de dependências.\\
+\newline
+Além destas funcionalidades foi-nos também proposto dar a possibilidade ao utilizador de poder manipular a gramática com o uso de várias técnicas, como por exemplo o {\em slicing} de uma gramática.\\
+
+\subsection{Objectivos a Cumprir}
+
+Neste primeiro exemplo pretende-se analisar gramáticas, escritas de acordo com a meta-gramática descrita no anexo A. Para efeitos de análise pretende-se extrair, armazenar e visualizar a seguinte informação:
+
+\begin{enumerate}
+\item Tabela de identificadores
+\item Grafo de dependências
+\item Cálculo dos vários tipos de métricas
+\item Slicing de uma gramática
+\item Remoção das produções inúteis da gramática
+\end{enumerate}
+
+
+\newpage
+
+%%
+% Secção - Resolução do Problema
+%%
+\section{\LARGE Processo de Desenvolvimento}
+
+%%
+% Secção - Gramática Desenvolvida
+%%
+
+\subsection{\large Tabela de Identificadores}
+
+No nosso entender a tabela de identificadores tem que conter o máximo de informação possível de forma aos resultados serem o mais rico possíveis. Para isso decidimos implementar uma tabela de identificadores que distingue os vários tipos de símbolos inseridos e permite que a informação associada dependa do tipo de símbolo que encontramos.\\
+\newline
+A nossa tabela permite-nos armazenar, dependendo do tipo do símbolo (Terminal, Não-Terminal, etc.), a seguinte informação:
+\vspace{0.5cm}
+
+\begin{center}
+\begin{tabular}[c]{|l|c|c|}
+\hline
+\multicolumn{2}{|l|}{\textbf{Símbolo Terminal}} & \textbf{Símbolo Não-Terminal}\\
+%\textbf{Símbolo Terminal} & \textbf{Símbolo Não-Terminal}\\
+\hline
+1 & Expressão Regular & Tipo de Recursividade\\
+\hline
+2 & Lista de Pais & Lista de Pais\\
+\hline
+3 & Lista de Atributos & Número de Alternativas\\
+\hline
+4 & & Lista de {\em Right Hand Side}\\
+\hline
+5 & & Total de Símbolos do Lado Direito\\
+\hline
+6 & & Lista de Atributos\\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+Além desta informação toda decidimos também representar um grafo na tabela de identificadores, ou seja, cada entrada da tabela tem um nodo que contêm uma lista de todos os nodos do grafo que dele dependem. Desta forma podemos ter fácil acesso a qualquer parte do grafo sem termos que fazer pesquisas na tabela. Mais à frente neste relatório vamos explicar melhor a importância deste grafo também no cálculo das métricas.\\
+\newline
+Associada à tabela existe um campo para guardar a raíz da gramática e outro para guardar o nome da mesma. Adicionar estes campos, parecendo que não, reduz imenso os acessos "inúteis" à tabela, por exemplo, sempre que precisarmos de aceder à raíz da gramática (para gerar o grafo de dependências, para calcular a forma da recursividade com uma só travessia, etc.) temos que percorrer a tabela à procura da entrada onda a lista de pais é igual à lista vazia.\\
+
+%%
+% Secção
+%%
+\vspace{0.5cm}
+\subsection{\large Cálculo das Métricas}
+
+Com o intuito de facilitar a organização e a apresentação dos resultados dos cálculos, decidimos criar um objecto que guarda todos os resultados e que executa todos os cálculos intermédios. Estes cálculos podem ser feitos individualmente ou em conjunto.\\
+\newline
+As métricas implementadas no seu todo até ao momento são as métricas de tamanho relativas à gramática e as métricas de forma. As outras ainda não estão totalmente implementadas devido ao simples facto de necessitarem de informação auxiliar (por exemplo, necessitar de um autômato finito determinístico) para os cálculos poderem ser feitos.\\
+
+\subsubsection{Métricas Lexicográficas}
+
+Neste tipo de métricas verificamos a legibilidade dos símbolos não-terminais e terminais, nestes últimos ainda fizemos a distinção entre as expressões regulares e as palavras reservadas e sinais.\\
+\newline
+Como seria impossível fazer uma verificação destas sem sequer sabermos em que contexto estamos então, para estes cálculos poderem ser feitos é imposto como requisito de entrada uma base de conhecimento com várias palavras no contexto da gramática. Com este tipo de {\em input} já nos é possível percorrer todos os símbolos da gramática a estudar e verificar a sua legibilidade.\\
+\newline
+A implementação não é muito mais que isso. Só temos que ter em conta que quando encontramos um símbolo etiquetado com ``Terminal'' ou ``NonTerminal'' então, temos que actualizar os resultados. Este processo de actualizar resultados é uma forma de o fazer mas não a única nem talvez a mais precisa.\\
+\newline
+A forma como actualizamos os resultados é implementado desta forma:
+
+\begin{itemize}
+\item se o identificador do símbolo está contido no conjunto de palavras do contexto então é um símbolo extenso;
+\item senão temos que verificar se o identificador do símbolo está contido nalguma das palavras do conjunto, ficande este como um símbolo abreviado. Isto pode ocorrer das seguintes formas:
+\begin{itemize}
+\item o símbolo abreviado ocorre como uma sequência no símbolo extenso;
+\item os símbolos que compôe o símbolo abreviado aparecem dispersados no símbolo extenso.\\
+\end{itemize}
+\end{itemize}
+
+\begin{small}
+\begin{lstlisting}
+if(type.matches("Terminal") || type.matches("NonTerminal")) {
+    if(words.contains(symb)) {
+        extenNUT++;
+    }
+    else {
+        for(String str : this.words) {
+            if(-1 != str.indexOf(symb)) {
+                abrevNUT++;
+            }
+        }
+    }
+}
+\end{lstlisting}
+\end{small}
+
+\begin{LARGE}Ou então em verbatim:\end{LARGE}
+
+\begin{small}
+\begin{verbatim}
+if(type.matches("Terminal") || type.matches("NonTerminal")) {
+    if(words.contains(symb)) {
+        extenNUT++;
+    }
+    else {
+        for(String str : this.words) {
+            if(-1 != str.indexOf(symb)) {
+                abrevNUT++;
+            }
+        }
+    }
+}
+\end{verbatim}
+\end{small}
+
+Para as palavras reservadas e sinais é utilizado o mesmo processo.\\
+
+%%
+% Secção
+%%
+\subsection{\large Slicing para Símbolos}
+
+Dividimos este problema em dois mais pequenos de forma a tornar o código mais legível e o menos complexo possível. Primeiro marcamos todos os nodos que pertencem ao {\em slicing} e só depois percorremos o grafo imprimindo-o com a notação {\em dot}\footnote{{\em http://en.wikipedia.org/wiki/DOT\_language}} (isto em qualquer um dos {\em slicings}).\\
+\newline
+Para marcar os nodos temos que percorrer o grafo a partir do nodo que nos foi dado, se for {\em forward} usamos o grafo de dependências senão utilizamos o {\em RHS} de cada produção (o código abaixo é para o {\em forward slicing}). Usando o grafo só temos que seguir todos os caminhos e evitar só aqueles que nos levam a nodos já vistos, já isto não acontece se usarmos a lista de {\em RHS} já que temos que encontrar todos os caminhos possíveis para a raíz do grafo, evitando então todos os caminhos que não façam parte desses percursos. Neste caso de {\em slicing}, se o símbolo em que nos encontramos ainda não faz parte do resultado e o seu pai já foi processado, então este recebe o valor de marcação do pai. Se um símbolo recursivo, que já foi processado, pertence ao {\em slicing} então isto permite-nos que todos os símbolos que de este dependem, também pertencam.
+
+\begin{figure}[!ht] \label{fig:1}
+\begin{center}
+\includegraphics[width=0.15\textwidth]{./Images/GCI_Slicing.png}
+\end{center}
+\caption{Forward Slicing para o símbolo não terminal {\em coorient}}
+\end{figure}
+
+Para imprimir o grafo, é preciso fazer uma simples travessia ao grafo mas tendo em conta que podemos ter vários caminhos entre símbolos adjacentes. Todos os que tiverem marcados serão impressos com uma diferente cor e com a seta direccionada tendo em conta o tipo de {\em slicing} escolhido, claro sem alterar as direcções do grafo de dependências.\\
+\newline
+Se o grafo representar um {\em slicing} de uma gramática para um determinado símbolo, então é necessário fazer os passos tanto de um {\em forward slicing} como de um {\em backward slicing}.\\
+\newline
+Depois disto é necessário desmarcar todos os nodos para evitar, por exemplo, o utilizador requisitar um {\em backward slicing} e aparecerem caminhos marcados porque antes tinha sido feito um {\em forward slicing}.\\
+\newline
+O grafo na secção~\ref{fig:1} na página~\pageref{fig:1} é um exemplo de um grafo gerado por um destes algoritmos.
+
+%Síntese / Recapitulação do Relatório
+%Resultado Atingido / Crítica
+%Trabalho Futuro
+
+\newpage
+
+\section*{\LaTeX}\label{sec:formulas}
+Primeiro, e antes de tudo, não sei se reparaste que esta secção não aparece no índice. Muito provavelmente deves estar agora a ver se realmente não aparece no índice e a pensar como é possível isso acontecer já que este é gerado automaticamente pelo comando \verb|\tableofcontents|.\\
+\newline
+Esta secção tem como único propósito testares os teus conhecimentos de \fbox{\LaTeX}\@. Esta ferramenta vai ser bastante útil durante o teu percurso académico (\underline{ou assim o esperamos}).\\
+\newline
+
+\textbf{Comecemos por centrar o texto\ldots}
+\begin{center}
+Fourscore and seven years ago our fathers brought forth on this continent a new nation, conceived in liberty and dedicated to the proposition that all men are created equal.
+\end{center}
+
+\textbf{Agora alinhamos à esquerda\ldots}
+\begin{flushleft}
+Now we are engaged in a great civil war, testing whether that nation or any nation so conceived and so dedicated can long endure. We are met on a great battlefield of that war. We have come to dedicate a portion of it as a final resting place for those who died here that the nation might live. This we may, in all propriety do. But in a larger sense, we cannot dedicate, we cannot consecrate, we cannot hallow this ground. The brave men, living and dead who struggled here have hallowed it far above our poor power to add or detract. The world will little note nor long remember what we say here, but it can never forget what they did here.
+\end{flushleft}
+
+\textbf{E agora à direita\ldots}
+\begin{flushright}
+It is rather for us the living, we here be dedicated to the great task remaining before us--that from these honored dead we take increased devotion to that cause for which they here gave the last full measure of devotion--that we here highly resolve that these dead shall not have died in vain, that this nation shall have a new birth of freedom, and that government of the people, by the people, for the people shall not perish from the earth.
+\end{flushright}
+
+\textbf{Vamos agora brincar um pouco com equações. Podemos usar as seguintes sucessões:}
+
+\begin{eqnarray}
+1+2+3+\cdots+n&=&\frac{n(n+1)}{2}\label{linear}\\
+1^2+2^2+3^2+\cdots+n^2&=& \frac{n(n+1)(2n+1)}{6}\label{squares}\nonumber\\
+1^3+2^3+3^3+\cdots+n^3&=& \frac{n^2(n+1)^2}{4}\label{cubes}
+\end{eqnarray}
+
+Dá uma olhadela na fórmula~(\ref{linear}) na página~\pageref{linear} na secção~\ref{sec:formulas}.\\
+
+\textbf{Existem várias formas de apresentar equações, esta é outra:}
+\begin{displaymath}
+\lim_{x \rightarrow 0}
+\Bigg\{\frac{\sin x}{x}\Bigg\}=1
+\end{displaymath}
+\newline
+\newline
+\textbf{Também podemos ter em conta o seguinte pormenor:}\\
+Se tentarmos escrever a palavra \begin{Huge}effect\end{Huge} vamos reparar que os dois F ficam juntos. Mas na realidade o que queremos é que apareça desta forma \begin{Huge}ef\mbox{}fect\end{Huge}\\
+\newline
+\textbf{Qualquer dúvida usem o seguinte contacto:} http://www.di.uminho.pt/$\sim$mac/
+
+\newpage
+
+\section{\LARGE Conclusão}
+\textbf{Concluído!!!}
+
+\newpage
+\begin{appendix}
+\section{Grammar}
+\begin{small}
+\begin{lstlisting}
+/** ANTLR v3 grammar written in ANTLR v3
+(minimized with learning purposes) */
+grammar ANTLRv31;
+
+options {
+        output=AST;
+        ASTLabelType=CommonTree;
+}
+
+tokens {
+        DOC_COMMENT;
+    RANGE;
+   SEMPRED;
+}
+
+@members {
+        int gtype;
+}
+
+grammarDef
+  :   DOC_COMMENT? g='grammar' id ';' rule+ 
+    ;
+
+rule scope { String name; } :
+  DOC_COMMENT? ( modifier=('protected'|'public'|'private'|'fragment'))?
+  id {$rule::name = $id.text;} '!'? ARG_ACTION? ( 'returns' ARG_ACTION )?
+  ':'     altList ';'
+        ;
+
+block:   '(' alternative ( '|' alternative )* ')'
+    ;
+
+altList:   alternative ( '|' alternative )*
+    ;
+
+alternative:   element+ 
+           |   
+           ;
+
+element:        elementNoOptionSpec
+       ;
+
+elementNoOptionSpec :   id ('=' | '+=') atom ( ebnfSuffix | )
+                |       id ('='| '+=') block ( ebnfSuffix | )
+                |       atom ( ebnfSuffix | )
+                |       ebnf
+                |   ACTION
+                |   SEMPRED ( '=>' | )
+        ;
+
+\end{lstlisting}
+\end{small}
+\end{appendix}
+
+\newpage
+
+\end{document}

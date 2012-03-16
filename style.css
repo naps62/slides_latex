@@ -1,0 +1,64 @@
+body, th, td {
+ font: normal 13px Verdana,Arial,'Bitstream Vera Sans',Helvetica,sans-serif;
+}
+h1, h2{
+ font-family: Arial,Verdana,'Bitstream Vera Sans',Helvetica,sans-serif;
+ font-weight: bold;
+ page-break-after: avoid;
+}
+h1 { font-size: 25px; margin: .15em 1em 0.5em 0 }
+h2 { font-size: 20px }
+h3, h4 { font-size: 16px }
+h4 {font-size: 14px }
+
+/* Link styles */
+:link, :visited {
+ text-decoration: none;
+ color: #b00;
+ border-bottom: 1px dotted #bbb;
+}
+
+:link:hover, :visited:hover { background-color: #eee; color: #555 }
+h2 :link, h2 :visited, h3 :link, h3 :visited , h4 :link, h4 :visited {
+color: inherit;
+border-bottom: none;
+}
+
+body {
+    counter-reset: hb;      /* Create a chapter counter scope */
+}
+
+h2 {counter-reset: hc;      /* Set section to 0 */}
+h3 {counter-reset: hd;      /* Set section to 0 */}
+
+
+h2:before {
+    content: counter(hb) ". ";
+    counter-increment: hb;
+}
+h3:before {
+    content: counter(hb) "." counter(hc)". ";
+    counter-increment: hc;
+}
+h4:before {
+    content: counter(hb) "." counter(hc)"." counter(hd)". ";
+    counter-increment: hd;
+}
+
+.back{
+	font-size: 10px;
+}
+p {
+width: 700px;
+line-height: 1.5em;
+text-align: justify;
+}
+li {
+width: 660px;
+text-align: justify;
+}
+li.wide {
+width: 660px;
+line-height: 1.5em;
+text-align: justify;
+}

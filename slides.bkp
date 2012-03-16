@@ -1,0 +1,335 @@
+\documentclass[compress]{beamer}
+\mode<presentation>{\usetheme{Copenhagen}} 
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage[portuges]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{fancyvrb}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{color}
+
+
+\defbeamertemplate*{headline}{Copenhagen theme}
+{%
+\leavevmode%
+\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,right]{section in head/foot}%
+\usebeamerfont{section in head/foot}\insertsectionhead\hspace*{2ex}
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,left]{subsection in head/foot}%
+\usebeamerfont{subsection in head/foot}\hspace*{2ex}\insertsubsectionhead
+\end{beamercolorbox}%
+}
+
+\defbeamertemplate*{footline}{ntnu theme}
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}%\insertframenumber{}
+	\hfill\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+%\usepackage{txfonts}% use Arial && Times New Roman
+\usepackage[T1]{fontenc}
+\usepackage{ae}
+\title{Introdução ao \LaTeX}
+\institute{\small{\Verb|cesium@di.uminho.pt|}}
+\author[CeSIUM]{CeSIUM}
+
+%\usetheme{Darmstadt}
+%\usetheme{PaloAlto}
+%\usetheme{JuanLesPins}
+%\usetheme{Goettingen}
+
+%\setbeamercolor{frametitle}{fg=blue,bg=yellow}
+\definecolor{mygreen}{rgb}{0,0.4,0} % Verde escuro
+\setbeamercolor{structure}{fg=mygreen}
+\setbeamertemplate{navigation symbols}{}
+
+\begin{document}
+\setcounter{framenumber}{-1}
+\begin{frame}[plain]
+	\maketitle
+	\begin{multicols}{2}
+	\pgfimage[width=0.45\textwidth]{img/caos}
+	\pgfimage[width=0.45\textwidth]{img/cesium}
+	\end{multicols}
+\end{frame}
+
+%\logo{\pgfimage[width=0.2\textwidth]{logo_big}}
+\frame{\tableofcontents}
+
+
+
+\section{Contexto}
+\subsection{Curiosidades}
+%\addtocounter{framenumber}{-1}
+\frame{
+	\frametitle{\emph{Disclaimer}}
+	Esta apresentação foi indecentemente copiada de uma outra, elaborada por \textbf{Alberto Simões, Davide Sousa, Nuno Veloso e Ulisses Costa}, e que pode ser encontrada em\\
+\begin{center}
+\url{http://caos.di.uminho.pt/~nuno/LaTeX}.
+\end{center}
+}
+\frame{\tableofcontents[currentsection,currentsubsection]}
+\frame{
+	\frametitle{Curiosidades}
+	\begin{block}{\TeX\ - O quê?}
+	\begin{itemize}
+	\item sistema de tipografia \emph{open source} e \emph{crossplatform}
+	\item popular no meio académico pela capacidade de produzir fórmulas e símbolos matemáticos
+	\item em \Verb|ASCII| escreve-se \TeX  ou \Verb|TeX|
+	\item etimologia: do grego ...... \textsl{(téchne)} que significa arte
+	\item pronuncia-se \textsl{tech} ou \textsl{tec}
+	\end{itemize}
+	\end{block}
+
+	\begin{block}{\TeX - Quem?}
+	\begin{itemize}
+	\item Donald Ervin Knuth, Universidade de Stanford
+	\item autor do livro \textsl{"The Art of Computer Programming"}
+	\end{itemize}
+	\end{block}
+}
+\frame{
+	\frametitle{Curiosidades}
+	\begin{block}{\TeX - Porquê?}
+	\begin{itemize}
+	\item descontentamento com a fraca qualidade e fiabilidade das impressões dos seus livros e artigos
+	\item Knuth achava que poupava tempo criando um sistema tipográfico de raiz
+	\item explorar as potencialidades dos sistemas de impressão digital
+	\end{itemize}
+	\end{block}
+
+	\begin{block}{\TeX - Quando?}
+	\begin{description}
+	\item[1977] Knuth escreveu um \emph{memo} descrevendo as principais funcionalidades do \TeX
+	\item[1978] Ano zero
+	\item[1982] Motor próximo do actual
+	\item[1989] suporte para múltiplas linguagens e caracteres de 8 bits
+	\end{description}
+	\end{block}
+}
+\subsection{\TeX vs. \LaTeX}
+\frame{\tableofcontents[currentsubsection]}
+\frame{
+	\frametitle{\TeX vs. \LaTeX}
+	\begin{block}{\LaTeX}
+	\begin{itemize}
+	\item simultaneamente \Verb|markup language| e um processador de texto para \TeX
+	\item conjunto de macros que compõem uma linguagem \emph{high-level} para o \TeX
+	\item permite lidar com bibliografias, citações, formatos de páginas, referências cruzadas, \dots
+	\end{itemize}
+	\end{block}
+}
+\subsection{A filosofia}
+\frame{\tableofcontents[currentsubsection]}
+\frame{
+	\frametitle{WYSIWYG}
+	\huge{\textbf{W}hat \textbf{Y}ou \textbf{S}ee \textbf{I}s \textbf{W}hat \textbf{Y}ou \textbf{G}et}
+}
+\frame{
+	\frametitle{WYSIWYAF}
+	\huge{\textbf{W}hat \textbf{Y}ou \textbf{S}ee \textbf{I}s \textbf{W}hat \textbf{Y}ou \textbf{A}sked \textbf{F}or}
+}
+\frame{
+	\frametitle{A diferença}
+	\begin{center}
+	\pgfimage[width=0.90\textwidth]{img/filosofia}
+	\end{center}
+}
+\frame{
+	\frametitle{11 boas razões para usar \TeX}
+	\begin{enumerate}
+	\item O \TeX tem o melhor \emph{output}
+	\item O \TeX sabe compôr
+	\item O \TeX é rápido
+	\item O \TeX é estável
+	\item O \TeX é flexível
+	\item O \emph{input} é texto simples
+	\item O \emph{output} pode ser qualquer coisa
+	\item O \TeX é gratuito
+	\item O \TeX corre em qualquer lado
+	\item O \TeX é um standard
+	\pause
+	\item \Large{\textbf{Virtualmente, não possui nenhum bug!}}
+	\end{enumerate}
+}
+\section{Instalação}
+\frame{\tableofcontents[currentsection]}
+\frame{
+	\frametitle{Instalação}
+	\small{
+	\begin{block}{Linux}
+	\TeX \Verb|Live|
+	\begin{itemize}
+	\item .deb \\
+	\Verb|\# aptitude install kyle texlive|
+	\item .rpm \\
+	\Verb|\# yum install kile texlive pgf|
+	\end{itemize}
+	\end{block}
+	
+	\begin{block}{MacOS}
+	\begin{itemize}
+	\item \Verb|Mac|\TeX
+	\item \Verb|gw|\TeX
+	\item \Verb|Oz|\TeX
+	\end{itemize}
+	\end{block}
+
+	\begin{block}{Windows}
+	\begin{itemize}
+	\item \Verb|Mik|\TeX
+	\end{itemize}
+	\end{block}
+}}
+\frame{
+	\frametitle{Editores}
+	\begin{itemize}
+	\item \Verb|vim|
+	\item Emacs
+	\item iTeXMac, TeXShop (MacOS)
+	\item Kile, Texmaker (Linux)
+	\item WinEdt / WinShell, Texmaker (Windows)
+	\end{itemize}
+}
+\section{Conceitos teóricos}
+\subsection{Antes de começar}
+\frame{\tableofcontents[currentsection,currentsubsection]}
+\begin{frame}[fragile]
+	\frametitle{Antes de começar}
+	
+	\begin{Verbatim}
+	\documentclass{article}
+	\begin{document}
+	Hello World!    % isto continua a representar
+	                % um comentário 
+	\end{document}
+	\end{Verbatim}
+	\begin{block}{Em \LaTeX}
+	\begin{itemize}
+	\item os comandos começam sempre por \emph{backslash} \Verb|\|
+	\item os \textbf{ambientes} são sempre definidos por \Verb|{...}| e as opções por \Verb|[...]|
+	\item \Verb|\\| corresponde a uma quebra de linha
+	\item muitos espaços ou tabulações são interpretados como um único espaço
+	\end{itemize}
+	\end{block}
+
+\end{frame}
+\subsection{Compilação}
+\frame{\tableofcontents[currentsubsection]}
+\frame{
+	\frametitle{Compilação}
+	\begin{itemize}
+	\item \Verb|pdflatex ficheiro.tex|
+	\item Opcionalmente algum comando extra para gerar conteúdo específico
+	\item Repetir \Verb|pdflatex ficheiro.tex|
+	\end{itemize}
+}
+\subsection{Estrutura de um documento}
+\begin{frame}[fragile]
+	\frametitle{Estrutura de um documento}
+\small{
+\begin{verbatim}
+\documentclass[11 pt,a4paper]{article} % artigo tecnico
+\usepackage[utf8]{inputenc} % encoding
+\usepackage[portuges]{babel}
+\end{verbatim}
+
+\vdots
+
+\begin{verbatim}
+\title { titulo do documento }
+\author { autor1 \ and autor2 \ and ... \ and autorn }
+\date {\ today } % data
+\begin { document }
+\maketitle % escreve o titulo
+\begin { abstract }
+resumo do documento ...
+\end { abstract }
+\table of contents % gera automaticamente o indice , sempre
+                   % que se altera e necessario compilar no
+                   % minimo 2 vezes e no maximo 3
+
+\end{verbatim}
+}
+\end{frame}
+
+\subsection{Estrutura de um documento}
+\begin{frame}[fragile]
+	\frametitle{Estrutura de um documento}
+\footnotesize{
+\begin{verbatim}
+\section{Nome da Section}
+o Renato e um palerma
+\subsection{Nome da SubSection}
+serio! e mesmo!
+\subsubsection{Nome da SubSubSection}
+e isto e uma SubSubSection a falar do problema do Renato ...
+\paragraph{Nome do paragrafo}la estou eu a escrever sem assentos ...
+\end{verbatim}
+\vdots
+\begin{verbatim}
+\end{document}
+\end{verbatim}
+\begin{block}{classes de documentos}
+\begin{itemize}
+\item article
+\item book
+\item letter
+\item report
+\item \dots
+\end{itemize}
+\end{block}
+}
+\end{frame}
+\subsection{Avisos à navegação}
+\frame{
+	\frametitle{Avisos à navegação}
+	\begin{itemize}
+	\item evitar criar secções ou subsecções únicas
+	\item evitar aninhamento excessivo de níveis de secção
+	\item usar títulos curtos
+	\item \textbf{nunca} usar níveis de secção como forma de alterar o tamanho de letra
+	\item não se assustem com a quantidade de erros de compilação
+	\item identação melhora a legibilidade e compreensão
+	\item evitar múltiplos tipos de letra no mesmo documento
+	\item deixar o \LaTeX\ tratar da orientação do texto
+	\end{itemize}
+}
+\section{Exemplos}
+\frame{\tableofcontents[currentsection]}
+\frame{
+	\frametitle{}
+}
+
+\section{Finalização}
+\addtocounter{framenumber}{-1}
+\frame{\tableofcontents[currentsection]}
+\frame{
+	\frametitle{}
+}
+\frame{
+	\frametitle{}
+}
+\frame{
+	\frametitle{}
+}
+\begin{frame}[plain]
+	\titlepage
+	\begin{multicols}{2}
+	\pgfimage[width=0.45\textwidth]{img/caos}
+	\pgfimage[width=0.45\textwidth]{img/cesium}
+	\end{multicols}
+\end{frame}
+
+\end{document}
+
+
