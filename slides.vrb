@@ -1,0 +1,30 @@
+\frametitle {Bib\TeX}
+Ferramenta para gestão da bibliografia.
+~\\
+\begin{description}
+\item[biblio.bib:]
+\begin{verbatim}
+@article{oetiker1995not,
+  title={{The not so short introduction to
+      LATEX2$\varepsilon$}},
+  author={Oetiker, T. and Partl, H. and Hyna,
+      I. and Schlegl, E.},
+  year={1995}
+}
+\end{verbatim}
+\item[document.tex:]
+\begin{verbatim}
+\cite{oetiker1995not}
+
+...
+
+\bibliography{myfirst.bib}
+\end{verbatim}
+
+\item[para compilar:]
+\begin{verbatim}
+pdflatex document.tex
+bibtex   document.aux
+pdflatex document.tex
+\end{verbatim}
+\end{description}
