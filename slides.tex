@@ -137,7 +137,7 @@
 	\end{center}
 }
 \frame{
-	\frametitle{A diferença}
+	\frametitle{O output}
 	\begin{center}
 	\pgfimage[width=0.90\textwidth]{img/filosofia}
 	\end{center}
@@ -153,10 +153,10 @@
 	\item O \emph{input} é texto simples
 	\item O \emph{output} pode ser qualquer coisa
 	\item O \LaTeX\ é gratuito
-	\item O \LaTeX\ corre em qualquer lado
+	\item O \LaTeX\ é multiplataforma
 	\item O \LaTeX\ é um standard
 	\pause
-	\item \Large{\textbf{Virtualmente, não possui nenhum bug!}}
+	\item \Large{\textbf{Virtualmente, não possui qualquer bug!}}
 	\end{enumerate}
 }
 \frame{
@@ -175,55 +175,55 @@
 	\hline
 	\end{tabular}
 }
-\section{Instalação}
-\frame{\tableofcontents[currentsection]}
-\frame{
-	\frametitle{Instalação}
-	\small{
-	\begin{block}{Linux}
-	\TeX\ \Verb|Live|
-	\begin{itemize}
-	\item .deb \\
-	\Verb|\# aptitude install kile texlive|
-	\item .rpm \\
-	\Verb|\# yum install kile texlive pgf|
-	\end{itemize}
-	\end{block}
-	
-	\begin{block}{MacOS}
-	\begin{itemize}
-	\item \Verb|Mac|\TeX
-	\item \Verb|gw|\TeX
-	\item \Verb|Oz|\TeX
-	\end{itemize}
-	\end{block}
-
-	\begin{block}{Windows}
-	\begin{itemize}
-	\item \Verb|Mik|\TeX
-	\end{itemize}
-	\end{block}
-
-	\begin{center}
-		http://caos2.di.uminho.pt/socios/$\sim$naps62/latex
-	\end{center}
-}}
-\frame{
-	\frametitle{Editores}
-	\begin{itemize}
-	\item Sublime Text
-	\item \Verb|vim|
-	\item Emacs
-	\item iTeXMac, TeXShop (MacOS)
-	\item Geany, Kile, Texmaker (Linux)
-	\item WinEdt / WinShell, Texmaker (Windows)
-	\end{itemize}
-}
-\section{Conceitos teóricos}
-\subsection{Antes de começar}
+%\section{Instalação}
+%\frame{\tableofcontents[currentsection]}
+%\frame{
+%	\frametitle{Instalação}
+%	\small{
+%	\begin{block}{Linux}
+%	\TeX\ \Verb|Live|
+%	\begin{itemize}
+%	\item .deb \\
+%	\Verb|\# aptitude install kile texlive|
+%	\item .rpm \\
+%	\Verb|\# yum install kile texlive pgf|
+%	\end{itemize}
+%	\end{block}
+%	
+%	\begin{block}{MacOS}
+%	\begin{itemize}
+%	\item \Verb|Mac|\TeX
+%	\item \Verb|gw|\TeX
+%	\item \Verb|Oz|\TeX
+%	\end{itemize}
+%	\end{block}
+%
+%	\begin{block}{Windows}
+%	\begin{itemize}
+%	\item \Verb|Mik|\TeX
+%	\end{itemize}
+%	\end{block}
+%
+%	\begin{center}
+%		http://caos2.di.uminho.pt/socios/$\sim$naps62/latex
+%	\end{center}
+%}}
+%\frame{
+%	\frametitle{Editores}
+%	\begin{itemize}
+%	\item Sublime Text
+%	\item \Verb|vim|
+%	\item Emacs
+%	\item iTeXMac, TeXShop (MacOS)
+%	\item Geany, Kile, Texmaker (Linux)
+%	\item WinEdt / WinShell, Texmaker (Windows)
+%	\end{itemize}
+%}
+\section{Abordagem Inicial}
+\subsection{Características da Linguagem}
 \frame{\tableofcontents[currentsection,currentsubsection]}
 \begin{frame}[fragile]
-	\frametitle{Antes de começar}
+	\frametitle{Características da Linguagem}
 	
 	\begin{verbatim}
 	\documentclass{article}
@@ -235,24 +235,24 @@
 
 	\begin{block}{Em \LaTeX}
 	\begin{itemize}
-	\item os comandos começam sempre por \emph{backslash} \Verb|\|
-	\item os \textbf{ambientes} são sempre definidos por \Verb|{...}| e as opções por \Verb|[...]|
-	\item \Verb|\\| corresponde a uma quebra de linha
-	\item muitos espaços ou tabulações são interpretados como um único espaço
+	\item qualquer comando é antecedido por \emph{backslash} \Verb|\|.
+	\item os \textbf{ambientes} são sempre definidos por \Verb|{...}| e as respectivas opções por \Verb|[...]|.
+	\item \Verb|\\| significa quebra de linha.
+	\item muitos espaços ou tabulações são interpretados como um único espaço.
 	\end{itemize}
 	\end{block}
 
 \end{frame}
-\subsection{Compilação}
-\frame{\tableofcontents[currentsubsection]}
-\frame{
-	\frametitle{Compilação}
-	\begin{itemize}
-	\item \Verb|pdflatex ficheiro.tex|
-	\item Opcionalmente algum comando extra para gerar conteúdo específico
-	\item Repetir \Verb|pdflatex ficheiro.tex|
-	\end{itemize}
-}
+%\subsection{Compilação}
+%\frame{\tableofcontents[currentsubsection]}
+%\frame{
+%	\frametitle{Compilação}
+%	\begin{itemize}
+%	\item \Verb|pdflatex ficheiro.tex|
+%	\item Opcionalmente algum comando extra para gerar conteúdo específico
+%	\item Repetir \Verb|pdflatex ficheiro.tex|
+%	\end{itemize}
+%}
 \subsection{Estrutura de um documento}
 \frame{\tableofcontents[currentsection,currentsubsection]}
 \begin{frame}[fragile]
@@ -284,7 +284,7 @@ resumo do documento ...
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{estrutura de um documento}
+	\frametitle{Estrutura de um documento}
 \footnotesize{
 \begin{verbatim}
 \section{nome da section}
@@ -310,22 +310,22 @@ e isto é uma subsubsection
 \end{block}
 }
 \end{frame}
-\subsection{avisos à navegação}
-\frame{\tableofcontents[currentsection,currentsubsection]}
-\frame{
-	\frametitle{avisos à navegação}
-	\begin{itemize}
-	\item evitar criar secções ou subsecções únicas
-	\item evitar aninhamento excessivo de níveis de secção
-	\item usar títulos curtos
-	\item \textbf{nunca} usar níveis de secção como forma de alterar o tamanho de letra
-	\item não se assustem com a quantidade de erros de compilação
-	\item identação melhora a legibilidade e compreensão
-	\item evitar múltiplos tipos de letra no mesmo documento
-	\item deixar o \LaTeX\ tratar da orientação do texto
-	\end{itemize}
-}
-\section{Exemplos}
+%\subsection{avisos à navegação}
+%\frame{\tableofcontents[currentsection,currentsubsection]}
+%\frame{
+%	\frametitle{avisos à navegação}
+%	\begin{itemize}
+%	\item evitar criar secções ou subsecções únicas
+%	\item evitar aninhamento excessivo de níveis de secção
+%	\item usar títulos curtos
+%	\item \textbf{nunca} usar níveis de secção como forma de alterar o tamanho de letra
+%	\item não se assustem com a quantidade de erros de compilação
+%	\item identação melhora a legibilidade e compreensão
+%	\item evitar múltiplos tipos de letra no mesmo documento
+%	\item deixar o \LaTeX\ tratar da orientação do texto
+%	\end{itemize}
+%}
+\section{Exemplos Concretos}
 \subsection{Notas de rodapé}
 \frame{\tableofcontents[currentsection,currentsubsection]}
 \begin{frame}[fragile]
