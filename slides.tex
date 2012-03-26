@@ -100,6 +100,7 @@
 	\end{itemize}
 	\end{block}
 }
+
 \frame{
 	\frametitle{Curiosidades}
 	\begin{block}{\TeX\ - Porquê?}
@@ -118,7 +119,8 @@
 	\end{description}
 	\end{block}
 }
-\subsection{A filosofia}
+
+\subsection{Filosofias}
 \frame{\tableofcontents[currentsubsection]}
 \frame{
 	\frametitle{WYSIWYG}
@@ -137,13 +139,13 @@
 	\end{center}
 }
 \frame{
-	\frametitle{O output}
+	\frametitle{Output}
 	\begin{center}
 	\pgfimage[width=0.90\textwidth]{img/filosofia}
 	\end{center}
 }
 \frame{
-	\frametitle{11 boas razões para usar \LaTeX}
+	\frametitle{Boas razões para usar \LaTeX}
 	\begin{enumerate}
 	\item O \LaTeX\ tem o melhor \emph{output}
 	\item O \LaTeX\ sabe compôr
@@ -155,26 +157,25 @@
 	\item O \LaTeX\ é gratuito
 	\item O \LaTeX\ é multiplataforma
 	\item O \LaTeX\ é um standard
-	\pause
 	\item \Large{\textbf{Virtualmente, não possui qualquer bug!}}
 	\end{enumerate}
 }
-\frame{
-	\frametitle{MS Word vs LaTeX}
-	\begin{tabular}{|c|c|c|}
-	\hline
-									&	\textbf{MS Word} 			&	\textbf{\LaTeX} 				\\ \hline
-	Rapidez (documentos pequenos)	&	$\star\star\star\star\star$	&	$\star\star\star$				\\
-	Rapidez (grandes documentos)	&	$\star$						&	$\star\star\star\star\star$		\\
-	Facilidade de utilização		&	$\star\star\star\star$		&	$\star\star$					\\
-	Qualidade do resultado			&	$\star\star\star$			&	$\star\star\star\star\star$		\\
-	Capacidades cientificas			&	$\star$						&	$\star\star\star\star\star$		\\
-	Preço/Disponibilidade			&	$\star\star$				&	$\star\star\star\star\star$		\\
-	Compatibilidade					&	$\star\star$				&	$\star\star\star\star\star$		\\ \hline
-	Total							&	18/35						&	30/35							\\
-	\hline
-	\end{tabular}
-}
+%\frame{
+%	\frametitle{MS Word vs LaTeX}
+%	\begin{tabular}{|c|c|c|}
+%	\hline
+%									&	\textbf{MS Word} 			&	\textbf{\LaTeX} 				\\ \hline
+%	Rapidez (documentos pequenos)	&	$\star\star\star\star\star$	&	$\star\star\star$				\\
+%	Rapidez (grandes documentos)	&	$\star$						&	$\star\star\star\star\star$		\\
+%	Facilidade de utilização		&	$\star\star\star\star$		&	$\star\star$					\\
+%	Qualidade do resultado			&	$\star\star\star$			&	$\star\star\star\star\star$		\\
+%	Capacidades cientificas			&	$\star$						&	$\star\star\star\star\star$		\\
+%	Preço/Disponibilidade			&	$\star\star$				&	$\star\star\star\star\star$		\\
+%	Compatibilidade					&	$\star\star$				&	$\star\star\star\star\star$		\\ \hline
+%	Total							&	18/35						&	30/35							\\
+%	\hline
+%	\end{tabular}
+%}
 %\section{Instalação}
 %\frame{\tableofcontents[currentsection]}
 %\frame{
@@ -329,7 +330,7 @@ e isto é uma subsubsection
 \subsection{Notas de rodapé}
 \frame{\tableofcontents[currentsection,currentsubsection]}
 \begin{frame}[fragile]
-	\frametitle{primeiro exemplo}
+	\frametitle{Notas de rodapé}
 lorem ipsum dolor sit amet, consectetuer adipiscing elit.\\
 quisque facilisis, quam vitae consequat ultricies, risus est
 condimentum arcu, auctor convallis purus purus eget tortor.
@@ -345,10 +346,10 @@ In vehicula.\footnote{Sim, isto é \textit{Lorem Ipsum}}
 \end{verbatim}
 \end{frame}
 
-\subsection{Tipos e tamanhos de letra}
+\subsection{Tamanho e decoração do texto}
 \frame{\tableofcontents[currentsubsection]}
 \begin{frame}[fragile]
-	\frametitle{Tipos e tamanho de letra}
+	\frametitle{Tamanho e decoração do texto}
 	\begin{multicols}{2}
 	\begin{itemize}
 	\item \textbf{Bold} \verb|\textbf{Bold}|
@@ -380,11 +381,29 @@ In vehicula.\footnote{Sim, isto é \textit{Lorem Ipsum}}
 \begin{frame}[fragile]
 	\frametitle{Ambientes}
 \begin{verbatim}
-\begin{Nome_do_ambiente}
+\begin{Nome_do_ambiente}[Opções]
         Ambiente e etc
         Mais coisas
 \end{Nome_do_Ambiente}
 \end{verbatim}
+Por exemplo:
+\begin{tabular}{p{5cm}|p{5cm}} \hline
+Input 
+& 
+Output \\ \hline
+\begin{verbatim}
+\begin{itemize}
+    \item Item um.
+	\item Item dois.
+\end{itemize}
+\end{verbatim}
+&
+\begin{itemize}
+	\item Item um.
+	\item Item dois.
+\end{itemize}
+\end{tabular}
+
 \end{frame}
 
 \begin{frame}[fragile]
