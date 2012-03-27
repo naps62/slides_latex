@@ -313,21 +313,21 @@ e isto é uma subsubsection
 \end{block}
 }
 \end{frame}
-%\subsection{avisos à navegação}
-%\frame{\tableofcontents[currentsection,currentsubsection]}
-%\frame{
-%	\frametitle{avisos à navegação}
-%	\begin{itemize}
-%	\item evitar criar secções ou subsecções únicas
-%	\item evitar aninhamento excessivo de níveis de secção
-%	\item usar títulos curtos
-%	\item \textbf{nunca} usar níveis de secção como forma de alterar o tamanho de letra
-%	\item não se assustem com a quantidade de erros de compilação
-%	\item identação melhora a legibilidade e compreensão
-%	\item evitar múltiplos tipos de letra no mesmo documento
-%	\item deixar o \LaTeX\ tratar da orientação do texto
-%	\end{itemize}
-%}
+\subsection{Notas de estruturação}
+\frame{\tableofcontents[currentsection,currentsubsection]}
+\frame{
+	\frametitle{Notas de estruturação}
+	\begin{itemize}
+	\item Evitar secções ou subsecções únicas.
+	\item Evitar aninhamento excessivo de níveis de secção.
+	\item Utilizar títulos curtos.
+	\item \textbf{Nunca} utilizar níveis de secção de modo a alterar carecteristícas do texto.
+	\item não se assustem com a quantidade de erros de compilação.
+	\item identação melhora a legibilidade e compreensão.
+	\item evitar múltiplos tipos de letra no mesmo documento.
+	\item deixar o \LaTeX\ tratar da orientação do texto.
+	\end{itemize}
+}
 \section{Exemplos Concretos}
 \subsection{Notas de rodapé}
 \frame{\tableofcontents[currentsection,currentsubsection]}
@@ -388,7 +388,6 @@ In vehicula.\footnote{Sim, isto é \textit{Lorem Ipsum}}
         Mais coisas
 \end{Nome_do_Ambiente}
 \end{verbatim}
-Por exemplo:
 \begin{tabular}{p{5cm}|p{5cm}} \hline
 Input 
 & 
@@ -396,7 +395,7 @@ Output \\ \hline
 \begin{verbatim}
 \begin{itemize}
     \item Item um.
-	\item Item dois.
+    \item Item dois.
 \end{itemize}
 \end{verbatim}
 &
@@ -415,7 +414,6 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 \end{center}
 \begin{flushleft}
  Quisque facilisis, quam vitae consequat ultricies,\\
- risus est condimentum arcu,\\
  auctor convallis purus purus eget tortor.
 \end{flushleft}
 \begin{flushright}
@@ -423,11 +421,11 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
  Phasellus sed tellus nec ante nonummy elementum.
 \end{flushright}
 \begin{verbatim}
+\begin{center}
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 \end{center}
 \begin{flushleft}
  Quisque facilisis, quam vitae consequat ultricies,\\
- risus est condimentum arcu,\\
  auctor convallis purus purus eget tortor.
 \end{flushleft}
 \begin{flushright}
@@ -466,7 +464,7 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 \end{itemize}
 \end{verbatim}
 \end{multicols}
-Devem ser as mais frequentemente usadas.
+Para criar uma lista não numerda.
 \end{frame}
 
 \begin{frame}[fragile]
@@ -493,7 +491,7 @@ Devem ser as mais frequentemente usadas.
 \end{enumerate}
 \end{verbatim}
 \end{multicols}
-Usadas quando a ordem é importante.
+Para criar uma lista enumerada.
 \end{frame}
 
 \begin{frame}[fragile]
@@ -513,7 +511,7 @@ Usadas quando a ordem é importante.
 	\end{description}
 	\end{verbatim}
 	\end{multicols}
-	Usam-se quando se pretender descrever items ou explicar o seu significado.
+	Para criar uma listagem de descrições.
 \end{frame}
 
 \begin{frame}[fragile]
