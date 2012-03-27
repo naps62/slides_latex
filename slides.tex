@@ -226,17 +226,19 @@
 \begin{frame}[fragile]
 	\frametitle{Características da Linguagem}
 	
-	\begin{verbatim}
+	\begin{lstlisting}
 	\documentclass{article}
+	% Preâmbulo
 	\begin{document}
 	Hello World!    % isto representa
 	                % um comentário 
 	\end{document}
-	\end{verbatim}
+	\end{lstlisting}
 
 	\begin{block}{Em \LaTeX}
 	\begin{itemize}
 	\item qualquer comando é antecedido por \emph{backslash} \Verb|\|.
+	\item No preâmbulo são definidas configurações para o documento
 	\item os \textbf{ambientes} são sempre definidos por \Verb|{...}| e as respectivas opções por \Verb|[...]|.
 	\item \Verb|\\| significa quebra de linha.
 	\item muitos espaços ou tabulações são interpretados como um único espaço.
