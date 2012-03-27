@@ -237,11 +237,11 @@
 
 	\begin{block}{Em \LaTeX}
 	\begin{itemize}
-	\item qualquer comando é antecedido por \emph{backslash} \Verb|\|.
-	\item No preâmbulo são definidas configurações para o documento
-	\item os \textbf{ambientes} são sempre definidos por \Verb|{...}| e as respectivas opções por \Verb|[...]|.
-	\item \Verb|\\| significa quebra de linha.
-	\item muitos espaços ou tabulações são interpretados como um único espaço.
+	\item qualquer comando é antecedido por \emph{backslash} \Verb|\|;
+	\item No preâmbulo são definidas configurações para o documento;
+	\item os \textbf{ambientes} são sempre definidos por \Verb|{...}| e as respectivas opções por \Verb|[...]|;
+	\item \Verb|\\| significa quebra de linha;
+	\item muitos espaços ou tabulações são interpretados como um único espaço;
 	\end{itemize}
 	\end{block}
 
@@ -261,20 +261,20 @@
 \begin{frame}[fragile]
 	\frametitle{Estrutura de um documento}
 \small{
-\begin{verbatim}
-\documentclass[11 pt,a4paper]{article} % artigo tecnico
+\begin{lstlisting}
+\documentclass[11 pt,a4paper]{article} % explicado mais á frente
 \usepackage[utf8]{inputenc} % encoding
-\usepackage[portuges]{babel}
-\end{verbatim}
+\usepackage[portuguese]{babel}
+\end{lstlisting}
 
 \vdots
 
-\begin{verbatim}
-\title{titulo do documento}
-\author{autor1 \and autor2 \and ... \and autorn}
+\begin{lstlisting}
+\title{Título do documento}
+\author{Miguel Palhas \and Gabriel Poça \and ... }
 \date{\today}             % data
 \begin{document}
-\maketitle                % escreve o titulo
+\maketitle                % escreve a capa
 \begin{abstract}
 resumo do documento ...
 \end {abstract}
@@ -282,7 +282,7 @@ resumo do documento ...
                           % que se altera e necessario compilar no
                           % minimo 2 vezes e no maximo 3
 
-\end{verbatim}
+\end{lstlisting}
 }
 \end{frame}
 
