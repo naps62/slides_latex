@@ -1,12 +1,3 @@
-%
-% TODO
-% captions
-% labels
-% table list / figure list / etc
-% citacoes
-% templates
-%
-
 \documentclass[10pt,compress]{beamer}
 \mode<presentation>{\usetheme{Copenhagen}} 
 \usepackage{tikz}
@@ -250,11 +241,11 @@
 
 	\begin{block}{Em \LaTeX}
 	\begin{itemize}
-	\item qualquer comando é antecedido por \emph{backslash} \Verb|\|;
-	\item No preâmbulo são definidas configurações para o documento;
-	\item os \textbf{ambientes} são sempre definidos por \Verb|{...}| e as respectivas opções por \Verb|[...]|;
-	\item \Verb|\\| significa quebra de linha;
-	\item muitos espaços ou tabulações são interpretados como um único espaço;
+	\item qualquer comando é antecedido por \emph{backslash} \Verb|\|
+	\item No preâmbulo são definidas configurações para o documento
+	\item os \textbf{ambientes} são sempre definidos por \Verb|{...}| e as respectivas opções por \Verb|[...]|
+	\item \Verb|\\| significa quebra de linha
+	\item muitos espaços ou tabulações são interpretados como um único espaço
 	\end{itemize}
 	\end{block}
 
@@ -337,11 +328,11 @@ e isto é uma subsubsecção
 	\item Evitar secções ou subsecções únicas.
 	\item Evitar aninhamento excessivo de níveis de secção.
 	\item Utilizar títulos curtos.
-	\item \textbf{Nunca} utilizar níveis de secção de modo a alterar carecteristícas do texto.
-	\item não se assustem com a quantidade de erros de compilação.
-	\item identação melhora a legibilidade e compreensão.
-	\item evitar múltiplos tipos de letra no mesmo documento.
-	\item deixar o \LaTeX\ tratar da orientação do texto.
+	\item \textbf{Nunca} utilizar níveis de secção como meio para alterar carecteristícas do texto.
+	\item Não se assustem com a quantidade de erros de compilação.
+	\item Indentação melhora a legibilidade e compreensão.
+	\item Evitar múltiplos tipos de letra no mesmo documento.
+	\item Deixar o \LaTeX\ tratar da orientação do texto.
 	\end{itemize}
 }
 \section{Exemplos Concretos}
@@ -405,9 +396,9 @@ In vehicula.\footnote{Sim, isto é \textit{Lorem Ipsum}}
 \end{Nome_do_Ambiente}
 \end{verbatim}
 \begin{tabular}{p{5cm}|p{5cm}} \hline
-Input 
+Código 
 & 
-Output \\ \hline
+Resultado \\ \hline
 \begin{verbatim}
 \begin{itemize}
     \item Item um.
@@ -421,34 +412,6 @@ Output \\ \hline
 \end{itemize}
 \end{tabular}
 
-\end{frame}
-
-\begin{frame}[fragile]
-	\frametitle{Alinhamento do texto}
-\begin{center}
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-\end{center}
-\begin{flushleft}
- Quisque facilisis, quam vitae consequat ultricies,\\
- auctor convallis purus purus eget tortor.
-\end{flushleft}
-\begin{flushright}
- Cras tempus.\\
- Phasellus sed tellus nec ante nonummy elementum.
-\end{flushright}
-\begin{verbatim}
-\begin{center}
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-\end{center}
-\begin{flushleft}
- Quisque facilisis, quam vitae consequat ultricies,\\
- auctor convallis purus purus eget tortor.
-\end{flushleft}
-\begin{flushright}
- Cras tempus.\\
- Phasellus sed tellus nec ante nonummy elementum.
-\end{flushright}
-\end{verbatim}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -531,62 +494,93 @@ Para criar uma lista enumerada.
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Tabelas}
-	\begin{multicols}{2}
-	\begin{center}
-	\addvspace{6cm}
-	\begin{tabular}{| lll |}
-	a & 2 & 3 \\
-	31 & b & 5 \\\hline
-	a & 4 & c
-	\end{tabular} \\
-
-	\addvspace{1cm}
-
-	\begin{tabular}{llll}
-	& 1 & 2 & 3 \\
-	$+$ & 3 & 4 & 5 \\\hline
-	& 4 & 6 & 9
-	\end{tabular}
-	\end{center}
-
-	\addvspace{3cm}
-
-	\begin{verbatim}
-	\begin{center}
-	\begin{tabular}{| lll |}
-	a & 2 & 3 \\
-	31 & b & 5 \\\hline
-	a & 4 & c
-	\end{tabular}
-	\end{center}
-
-	\begin{center}
-	\begin{tabular}{llll}
-	& 1 & 2 & 3 \\
-	$+$ & 3 & 4 & 5 \\\hline
-	& 4 & 6 & 9
-	\end{tabular}
-	\end{center}
-	\end{verbatim}
-	\end{multicols}
+	\frametitle{Alinhamento do texto}
+\begin{center}
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+\end{center}
+\begin{flushleft}
+ Quisque facilisis, quam vitae consequat ultricies,\\
+ auctor convallis purus purus eget tortor.
+\end{flushleft}
+\begin{flushright}
+ Cras tempus.\\
+ Phasellus sed tellus nec ante nonummy elementum.
+\end{flushright}
+\begin{verbatim}
+\begin{center}
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+\end{center}
+\begin{flushleft}
+ Quisque facilisis, quam vitae consequat ultricies,\\
+ auctor convallis purus purus eget tortor.
+\end{flushleft}
+\begin{flushright}
+ Cras tempus.\\
+ Phasellus sed tellus nec ante nonummy elementum.
+\end{flushright}
+\end{verbatim}
 \end{frame}
+
+%\begin{frame}[fragile]
+%	\frametitle{Tabelas}
+%	\begin{multicols}{2}
+%	\begin{center}
+%	\addvspace{6cm}
+%	\begin{tabular}{| lll |}
+%	a  & 2 & 3 \\
+%	31 & b & 5 \\
+%	\hline
+%	a  & 4 & c
+%	\end{tabular} \\
+%
+%	\addvspace{3cm}
+%
+%	\begin{tabular}{llll}
+%	& 1 & 2 & 3 \\
+%	$+$ & 3 & 4 & 5 \\
+%	\hline
+%	& 4 & 6 & 9
+%	\end{tabular}
+%	\end{center}
+%
+%	\addvspace{3cm}
+%
+%	\begin{verbatim}
+%	\begin{center}
+%	\begin{tabular}{| lll |}
+%	a  & 2 & 3 \\
+%	31 & b & 5 \\ 
+%	\hline
+%	a  & 4 & c
+%	\end{tabular}
+%	\end{center}
+%
+%	\begin{center}
+%	\begin{tabular}{llll}
+%	& 1 & 2 & 3 \\
+%	$+$ & 3 & 4 & 5 \\ 
+%	\hline
+%	    & 4 & 6 & 9
+%	\end{tabular}
+%	\end{center}
+%	\end{verbatim}
+%	\end{multicols}
+%\end{frame}
 
 \subsection{Cabeçalhos e rodapés}
 \frame{\tableofcontents[currentsubsection]}
 \begin{frame}[fragile]
 	\frametitle{Cabeçalhos e rodapés}
 	\begin{verbatim}
+	% No preâmbulo:
 \usepackage{fancyhdr}
 
 \pagestyle{fancy}
-\fancyhf{}             % elimina as configuracoes actuais
-                       % configuracoes dos cabecalhos
-\fancyhead[LE,RO]{...} % esquerda par e direita impar
-\fancyhead[LO]{...}    % esquerda impar
-\fancyhead[RE]{...}    % direita par
 
-\fancyfoot[...]{...}   % idem para os rodapes
+\lhead{Cabeçalho á esquerda}
+\chead{Cabeçalho ao centro}
+\rhead{Cabeçalho central}
+\rfoot{\thepage} % Insere o número da página em cada rodapé
 
 	\end{verbatim}
 \end{frame}
@@ -612,8 +606,6 @@ Compilando com o comando \verb|pdflatex| pode usar-se \verb|png, jpg| e \verb|pd
     \caption{Isto é uma legenda}
 \end{figure}
 
-\verb|\usepackage{graphicx}|\\
-\dots\\
 \begin{verbatim}
 \begin{figure}
     \centering
@@ -631,8 +623,10 @@ Usar \verb|\listoffigures| para criar índice de figuras.
 \begin{table}
       \centering
       \begin{tabular}{|c|c|c|c|c|}
+      		\hline
             & & T & e & X \\
-            L & a & T & e & X
+            L & a & T & e & X \\
+            \hline
       \end{tabular}
       \caption{\TeX\ \& \LaTeX}
 \end{table}
@@ -641,8 +635,10 @@ Usar \verb|\listoffigures| para criar índice de figuras.
 \begin{table}
       \centering
       \begin{tabular}{|c|c|c|c|c|}
+      	     \hline
             & & T & e & X \\
             L & a & T & e & X
+            \hline
       \end{tabular}
       \caption{\TeX\ \& \LaTeX}
 \end{table}
@@ -651,22 +647,7 @@ Usar \verb|\listoftables| para criar índice de tabelas.
 \end{frame}
 
 
-\begin{frame}[fragile]
-	\frametitle{Referências cruzadas}
-	Dentro do ambiente:
-	\begin{verbatim}
-	    \label{fig:fig_id} 
-	
-	    \label{tab:tab_id}
-	\end{verbatim}
-	
-	Para usar a referência:\\
-	\begin{verbatim}
-	    \ref{fig:fig_id} % referência ao número
 
-	    \ref{tab:tab_id} % referência à página
-	\end{verbatim}
-\end{frame}
 
 
 
@@ -691,16 +672,37 @@ E = mc^2 \qquad \textrm{(e posso escrever texto normal)}
 \end{verbatim}
 \end{frame}
 
+%\begin{frame}[fragile]
+%	\frametitle{Alguns exemplos}
+%	\begin{itemize}
+%	\item equações $ax^2+bx+c=0$  \verb!$ax^2+bx+c=0$!
+%	\end{itemize}
+%\end{frame}
+
+\section{Tópicos Avançados}
+\subsection{Referências}
+\frame{\tableofcontents[currentsubsection]}
+\frametitle{Referências}
 \begin{frame}[fragile]
-	\frametitle{Alguns exemplos}
-	\begin{itemize}
-	\item equações $ax^2+bx+c=0$  \verb!$ax^2+bx+c=0$!
-	\end{itemize}
+	\frametitle{Referências cruzadas}
+	Dentro do ambiente:
+	\begin{verbatim}
+		\begin{figure}
+    		\includegraphics[width=.1\textwidth]{img/tux}
+    		\caption{Isto é uma legenda}
+    		\label{fig:tux}
+			\end{figure}
+	\end{verbatim}
+	
+	Para usar a referência:
+	\begin{verbatim}
+		... bla bla bla \ref{fig:tux} ...
+	\end{verbatim}
 \end{frame}
 
-\section{Bónus: Bib\TeX}
+\subsection{Bibliografias (Bib\TeX)}
 \begin{frame}[fragile]
-\frametitle{Bib\TeX}
+\frametitle{Bibliografias (Bib\TeX)}
 Ferramenta para gestão da bibliografia.
 ~\\
 \begin{description}
@@ -716,7 +718,7 @@ Ferramenta para gestão da bibliografia.
 \end{verbatim}
 \item[document.tex:]
 \begin{verbatim}
-\cite{oetiker1995not}
+bla bla bla \cite{oetiker1995not}
 
 ...
 
@@ -739,6 +741,11 @@ pdflatex document.tex
 	\item Import into Bib\TeX.
 	\end{enumerate}
 \end{frame}
+
+\begin{frame}
+
+\end{frame}
+
 \section{Exercício}
 \frame{\tableofcontents[currentsection]}
 \frame{
@@ -748,6 +755,7 @@ pdflatex document.tex
 \url{http://www.alunos.di.uminho.pt/~a49344/latex}
 \end{center}
 }
+
 \begin{frame}[plain]
 	\maketitle
 	\begin{multicols}{2}
