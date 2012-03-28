@@ -1,4 +1,4 @@
-\frametitle {Bib\TeX}
+\frametitle {Bibliografias (Bib\TeX)}
 Ferramenta para gestão da bibliografia.
 ~\\
 \begin{description}
@@ -14,7 +14,7 @@ Ferramenta para gestão da bibliografia.
 \end{verbatim}
 \item[document.tex:]
 \begin{verbatim}
-\cite{oetiker1995not}
+bla bla bla \cite{oetiker1995not}
 
 ...
 

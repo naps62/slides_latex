@@ -266,7 +266,7 @@
 	\frametitle{Estrutura de um documento}
 \small{
 \begin{verbatim}
-\documentclass[11 pt,a4paper]{article} % explicado mais á frente
+\documentclass[11pt,a4paper]{article} % explicado mais á frente
 \usepackage[utf8]{inputenc} % encoding
 \usepackage[portuguese]{babel}
 \end{verbatim}
@@ -478,7 +478,7 @@ Para criar uma lista enumerada.
 	\begin{multicols}{2}
 	\begin{description}
 	\item[primeiro item] geralmente é o que vem em primeiro lugar
-	\item[segundo] vem depois do primeito
+	\item[segundo] vem depois do primeiro
 	\item[último] Este vem no fim
 	\end{description}
 
@@ -588,10 +588,11 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 \subsection{Imagens}
 \frame{\tableofcontents[currentsubsection]}
 \begin{frame}[fragile]
-	\frametitle{Graphicx}
+	\frametitle{Imagens}
 \verb|\usepackage{graphicx}|\\
 \dots\\
 \verb|\includegraphics[width=.1\textwidth]{logo_uminho}|\\
+
 Compilando com o comando \verb|pdflatex| pode usar-se \verb|png, jpg| e \verb|pdf|.
 \end{frame}
 
@@ -659,16 +660,16 @@ As fórmulas matemáticas são umas das maiores especialidades do \LaTeX.
 Para evidenciar a formula $E = mc^2$ no meio de um texto,
 usa-se $$E = mc^2$$ e a minha frase continua aqui.\\
 Pode-se tambem usar um abiente matematico:
-\begin{displaymath}
+$$
 E = mc^2 \qquad \textrm{(e posso escrever texto normal)}
-\end{displaymath}
+$$
 \begin{verbatim}
 Para evidenciar a formula $E = mc^2$ no meio de um texto,
 usa-se $$E = mc^2$$ e a minha frase continua aqui.\\
 Pode-se tambem usar um abiente matematico :
-\begin{displaymath}
+$$
 E = mc^2 \qquad \textrm{(e posso escrever texto normal)}
-\end{displaymath}
+$$
 \end{verbatim}
 \end{frame}
 
@@ -679,7 +680,6 @@ E = mc^2 \qquad \textrm{(e posso escrever texto normal)}
 %	\end{itemize}
 %\end{frame}
 
-\section{Tópicos Avançados}
 \subsection{Referências}
 \frame{\tableofcontents[currentsubsection]}
 \frametitle{Referências}
@@ -742,9 +742,11 @@ pdflatex document.tex
 	\end{enumerate}
 \end{frame}
 
-\begin{frame}
-
-\end{frame}
+\section{Templates e Apresentações}
+\frame{\tableofcontents[currentsection]}
+%\frame{
+%	\Huge{Templates e Apresentações}
+%}
 
 \section{Exercício}
 \frame{\tableofcontents[currentsection]}
@@ -752,7 +754,7 @@ pdflatex document.tex
 	\frametitle{Exercício}
 	Tentar copiar o mais fielmente possível o documento dado:
 \begin{center}
-\url{http://www.alunos.di.uminho.pt/~a49344/latex}
+http://caos2.di.uminho.pt/socios/$\sim$naps62/latex
 \end{center}
 }
 
